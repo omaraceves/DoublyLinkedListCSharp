@@ -27,6 +27,8 @@ namespace DoublyLinkedList
             dll.Append(9);
 
 
+            Console.ReadLine();
+
             dll.Print();
             //Finish program
             Console.ReadLine();
@@ -148,7 +150,7 @@ namespace DoublyLinkedList
             var newNode = GetNewNode(data);
 
             newNode.Prev = node.Prev;
-            node.Prev = node;
+            node.Prev = newNode;
             newNode.Next = node;
 
             if(newNode.Prev != null)
