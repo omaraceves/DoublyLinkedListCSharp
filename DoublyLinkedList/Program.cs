@@ -94,7 +94,7 @@ namespace DoublyLinkedList
         /// </summary>
         /// <param name="node">Previous node.</param>
         /// <param name="data">Node's data.</param>
-        /// <returns></returns>
+        /// <returns>Node<typeparamref name="T"/></returns>
         public Node<T> InsertAfter(Node<T> node, T data)
         {
             var newNode = GetNewNode(data);
@@ -113,6 +113,11 @@ namespace DoublyLinkedList
             return node;
         }
 
+        /// <summary>
+        /// Appends a node to the end of the list.
+        /// </summary>
+        /// <param name="data">Node's data.</param>
+        /// <returns>Node<typeparamref name="T"/></returns>
         public Node<T> Append(T data)
         {
             var node = GetNewNode(data);
@@ -132,6 +137,12 @@ namespace DoublyLinkedList
             return node;
         }
 
+        /// <summary>
+        /// Insert before a given node.
+        /// </summary>
+        /// <param name="node">Next node.</param>
+        /// <param name="data">Node's data.</param>
+        /// <returns>Node<typeparamref name="T"/></returns>
         public Node<T> InsertBefore(Node<T> node, T data)
         {
             var newNode = GetNewNode(data);
