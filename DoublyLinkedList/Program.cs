@@ -18,14 +18,22 @@ namespace DoublyLinkedList
             dll.Push(2);
            
             //Push 4 after Head.Next
-            dll.InsertAfter(dll.Head.Next, 4);
+            var four = dll.InsertAfter(dll.Head.Next, 4);
 
             //Push 5 before 1
             dll.InsertBefore(dll.Head.Next, 5);
 
             //Append 9
-            dll.Append(9);
+            var nine = dll.Append(9);
 
+            //Deletes 2 and makes 1 Head
+            dll.Delete(dll.Head);
+
+            //Delete 9
+            dll.Delete(nine);
+
+            //Delete 4
+            dll.Delete(four);
 
             Console.ReadLine();
 
@@ -96,7 +104,7 @@ namespace DoublyLinkedList
         /// </summary>
         /// <param name="node">Previous node.</param>
         /// <param name="data">Node's data.</param>
-        /// <returns>Node<typeparamref name="T"/></returns>
+        /// <returns>Inserted Node<typeparamref name="T"/></returns>
         public Node<T> InsertAfter(Node<T> node, T data)
         {
             var newNode = GetNewNode(data);
@@ -112,7 +120,7 @@ namespace DoublyLinkedList
 
             Console.WriteLine("Inserting {0} after {1}.", data, node.Data);
 
-            return node;
+            return newNode;
         }
 
         /// <summary>
@@ -160,7 +168,33 @@ namespace DoublyLinkedList
 
             Console.WriteLine("Inserting {0} before {1}.", data, node.Data);
 
-            return node;
+            return newNode;
+        }
+
+        /// <summary>
+        /// Deletes a given node
+        /// </summary>
+        /// <param name="node">Node to delete</param>
+        public void Delete(Node<T> node)
+        {
+            Console.WriteLine("Deleting {0}", node.Data);
+
+            if (node == Head)
+            {
+                Head = node.Next;
+                Head.Prev = null;
+                return;
+            }
+
+            if (node.Prev != null)
+            {
+                node.Prev.Next = node.Next;
+            }
+
+            if (node.Next != null)
+            {
+                node.Next.Prev = node.Prev;
+            }
         }
 
 
